@@ -1,0 +1,31 @@
+---
+- op: replace
+  path: /metadata/name
+  value: game-2048-ingress
+- op: add
+  path: /metadata/annotations
+  value: {
+              "vgs.com/team": "UNDEFINED",
+              "vgs.com/environment": "UNDEFINED",
+              "vgs.com/customer": "UNDEFINED",
+              "vgs.com/service": "UNDEFINED",
+              "vgs.com/suite": "UNDEFINED",
+              "vgs.com/department": "UNDEFINED",
+              "vgs.com/criticality": "UNDEFINßED",
+              "vgs.com/data-sensitivity": "UNDEFINED"
+  }
+- op: replace
+  path: /spec/ingressClassName
+  value: nginx
+- op: replace
+  path: /spec/rules
+  value:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: game-2048
+            port:
+              number: 80

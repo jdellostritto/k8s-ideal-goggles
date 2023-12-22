@@ -1,0 +1,17 @@
+---
+- op: replace
+  path: /metadata/name
+  value: game-2048
+- op: replace
+  path: /metadata/namespace
+  value: default
+- op: replace
+  path: /spec/selector
+  value:
+    app.kubernetes.io/name: game-2048
+- op: replace
+  path: /spec/ports
+  value:
+    - name: http
+      port: 80
+      targetPort: 80

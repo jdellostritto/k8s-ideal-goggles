@@ -1,0 +1,20 @@
+---
+- op: replace
+  path: /metadata/name
+  value: game-2048-ingress
+- op: replace
+  path: /spec/ingressClassName
+  value: ngrok
+- op: replace
+  path: /spec/rules
+  value:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: game-2048
+            port:
+              number: 80
+    host: lenient-thrush-kindly.ngrok-free.app
