@@ -1,7 +1,7 @@
 ---
-- op: replace
-  path: /metadata/name
-  value: game-2048-ingress
+#- op: replace
+#  path: /metadata/name
+#  value: app-
 - op: replace
   path: /spec/ingressClassName
   value: ngrok
