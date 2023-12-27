@@ -11,6 +11,6 @@ spec:
     name: in-cluster
   project: appbundle-development
   source:
-    path: apps/apps-children/development
+    path: apps/app-children/development
     repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD
