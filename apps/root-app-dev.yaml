@@ -12,5 +12,5 @@ spec:
   project: appbundle-development
   source:
     path: apps/apps-children/development
-    repoURL:  https://https://github.com/jdellostritto/k8s-ideal-goggles
+    repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD

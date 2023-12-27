@@ -12,5 +12,5 @@ spec:
   project: appbundle-sandbox
   source:
     path: apps/apps-children/sandbox
-    repoURL:  https://https://github.com/jdellostritto/k8s-ideal-goggles
+    repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD
