@@ -9,7 +9,7 @@ resources:
 
 # These components are for the deploymnent and service.
 # components are shared across each environment. There are no patches for the service and deployment here.
-# Because the are the saem for evey environemnt each env will pull the patch from the components (DRY)
+# Because the are the same for evey environemnt each env will pull the patch from the components (DRY)
 components:
   - ../../../components/2048
 
@@ -42,6 +42,7 @@ replicas:
 - name: base-app-2048
   count: 1
 
+# The only thing we want to patch for now in the dev environment.
 patches:
 - path: ./patch/ingress.yaml
   target:
