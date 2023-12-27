@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-appbundle-sandbox
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: sand
+    name: in-cluster
+  project: appbundle-sandbox
+  source:
+    path: apps/apps-children/sandbox
+    repoURL:  https://https://github.com/jdellostritto/k8s-ideal-goggles
+    targetRevision: HEAD

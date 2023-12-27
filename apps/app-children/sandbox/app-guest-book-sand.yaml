@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-guest-book-sand
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: sandbox
+    name: in-cluster
+  project: appbundle-sandbox
+  source:
+    path: overlays/sandbox/guest-book
+    repoURL: https://https://github.com/jdellostritto/k8s-ideal-goggles
+    targetRevision: HEAD
+    

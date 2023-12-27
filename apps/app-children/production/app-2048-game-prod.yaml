@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-2048-game-prod
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: prod
+    name: in-cluster
+  project: appbundle-production
+  source:
+    path: overlays/prod/2048
+   repoURL: https://https://github.com/jdellostritto/k8s-ideal-goggles
+    targetRevision: HEAD
+    

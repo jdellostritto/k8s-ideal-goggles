@@ -1,0 +1,16 @@
+---
+- op: replace
+  path: /spec/ingressClassName
+  value: nginx
+- op: replace
+  path: /spec/rules
+  value:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: base-guest-book
+            port:
+              number: 80

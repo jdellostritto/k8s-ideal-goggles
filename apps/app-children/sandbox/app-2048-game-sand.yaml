@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-2048-game-sand
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: sandbox
+    name: in-cluster
+  project: appbundle-sandbox
+  source:
+    path: overlays/sandbox/2048
+    repoURL: https://https://github.com/jdellostritto/k8s-ideal-goggles
+    targetRevision: HEAD
+    

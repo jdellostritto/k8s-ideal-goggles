@@ -1,0 +1,49 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+# Our base Manifests
+resources:
+- ../../../resources/namespace
+- ../../../resources/workload/deployment
+- ../../../resources/network/ingress
+- ../../../resources/network/service
+
+# These components are for the deploymnent and service.
+# components are shared across each environment. There are no patches for the service and deployment here.
+# Because the are the saem for evey environemnt each env will pull the patch from the components (DRY)
+components:
+  - ../../../components/2048
+
+# The name suffix will be appended the name of the resources (bases). 
+# In this example case our resource names are simply called `base`. 
+# So our service and deployment names will end up being:
+#  - 'base' + '-app-2048'
+# This file as well as the ingress file will need to be aware of this name.
+nameSuffix: -app-2048
+
+#The namespace to run.
+namespace: dev
+
+# The image and the tag to use.
+images:
+- name: UNDEFINED
+  newName: alexwhen/docker-2048
+  newTag: latest
+
+# Annotation Transformer - used to determine where to put annotations
+transformers:
+- ./transformers.yaml
+
+# The common label used for lables and Selectors.
+commonLabels:
+  app.kubernetes.io/name: base-app-2048
+
+# Replicas
+replicas:
+- name: base-app-2048
+  count: 1
+
+patches:
+- path: ./patch/ingress.yaml
+  target:
+    kind: Ingress
+    name: base

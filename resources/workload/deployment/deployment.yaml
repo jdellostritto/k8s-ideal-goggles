@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: base
   # Namespaces Guide: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
-  namespace: UNDEFINED
+  #namespace: UNDEFINED
   # Annotations Guide: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   annotations: {}
     # Annotate for clear ownership over the resources within your organization.
@@ -54,21 +54,12 @@ spec:
       # Common k8s Labels that should be defined in all resources
       # k8s Reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
       app.kubernetes.io/name: UNDEFINED
-      app.kubernetes.io/instance: UNDEFINED
-      app.kubernetes.io/version: UNDEFINED
-      app.kubernetes.io/component: UNDEFINED
-      app.kubernetes.io/part-of: UNDEFINED
   template:
     metadata:
       labels:
         # Common k8s Labels that should be defined in all resources
         # k8s Reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
         app.kubernetes.io/name: UNDEFINED
-        app.kubernetes.io/instance: UNDEFINED
-        app.kubernetes.io/version: UNDEFINED
-        app.kubernetes.io/component: UNDEFINED
-        app.kubernetes.io/part-of: UNDEFINED
-        app.kubernetes.io/managed-by: UNDEFINED
     spec:
       # Service account ‘automountServiceAccountToken’ should be set to ‘false’
       # unless the workload needs to communicate via a ServiceAccount
@@ -86,15 +77,15 @@ spec:
         imagePullPolicy: Always
       #  readinessProbe:
       #    httpGet:
-      #      path: /healthz
-      #      port: 8080
+      #      path: /
+      #      port: 80
       #    initialDelaySeconds: 5
       #    periodSeconds: 5
       #    timeoutSeconds: 5
       #  livenessProbe:
       #    httpGet:
-      #      path: /healthz
-      #      port: 8080
+      #      path: /
+      #      port: 80
       #    initialDelaySeconds: 15
       #    periodSeconds: 20
       #    timeoutSeconds: 5
