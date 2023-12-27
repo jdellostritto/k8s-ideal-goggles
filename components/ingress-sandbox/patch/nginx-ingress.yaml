@@ -11,7 +11,7 @@
   - http:
       paths:
       - pathType: Prefix
-        path: /2048
+        path: /
         backend:
           service:
             name: base-app-2048
