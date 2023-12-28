@@ -12,6 +12,6 @@ spec:
   project: project-cell-2
   source:
     path: overlays/cell-2/2048
-    repoURL: https://https://github.com/jdellostritto/k8s-ideal-goggles
+    repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD
     

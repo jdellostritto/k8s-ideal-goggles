@@ -14,7 +14,7 @@ spec:
   sourceRepos:
   - '*'
 
-  # Only permit applications to deploy to the guestbook namespace in the same cluster
+  # Only permit applications to deploy to the namespace in the same cluster
   destinations:
   - namespace: '*'
     server: '*'
