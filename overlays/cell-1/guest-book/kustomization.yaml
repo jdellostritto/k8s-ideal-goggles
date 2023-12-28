@@ -21,7 +21,7 @@ components:
 nameSuffix: -guest-book
 
 #The namespace to run.
-namespace: dev
+namespace: cell1
 
 images:
 - name: UNDEFINED

@@ -7,38 +7,41 @@ resources:
 #- ../../../resources/network/ingress
 - ../../../resources/network/service
 
-# These components are for the Deploymnent and Service neither changes per environment.
-# Components are shared across each environment. There are no patches for the service and deployment here.
-# Because the are the saem for evey environemnt each env will pull the patch from the components (DRY) 
+# These components are for the deploymnent and service.
+# components are shared across each environment. There are no patches for the service and deployment here.
+# Because the are the saem for evey environemnt each env will pull the patch from the components (DRY)
+ 
 components:
-  - ../../../components/guest-book
+  - ../../../components/2048
 
 # The name suffix will be appended the name of the resources (bases). 
 # In this example case our resource names are simply called `base`. 
 # So our service and deployment names will end up being:
-#  - 'base' + '-guest-book'
+#  - 'base' + '-app-2048'
 # This file as well as the ingress file will need to be aware of this name.
-nameSuffix: -guest-book
+nameSuffix: -app-2048
 
 #The namespace to run.
-namespace: sandbox
+namespace: cell3
 
+# The image and the tag to use.
 images:
 - name: UNDEFINED
-  newName: gcr.io/heptio-images/ks-guestbook-demo
-  newTag: "0.2"
+  newName: alexwhen/docker-2048
+  newTag: latest
 
 # Annotation Transformer - used to determine where to put annotations
 transformers:
 - ./transformers.yaml
 
-# The common label used for labels and Selectors.
+# The common label used for lables and Selectors.
 commonLabels:
-  app.kubernetes.io/name: base-guest-book
+  app.kubernetes.io/name: base-app-2048
 
+# Replicas
 replicas:
-- name: base-guest-book
-  count: 1 
+- name: base-app-2048
+  count: 1
 
 #patches:
 #- path: ./patch/ingress.yaml

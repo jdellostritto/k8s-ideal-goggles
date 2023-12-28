@@ -1,16 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-appbundle-sandbox
+  name: app-2048-game-cell-3
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: sand
+    namespace: cell3
     name: in-cluster
-  project: appbundle-sandbox
+  project: project-cell-3
   source:
-    path: apps/app-children/sandbox
+    path: overlays/cell-3/2048
     repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD
+    

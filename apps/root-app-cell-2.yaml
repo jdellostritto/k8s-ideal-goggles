@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-appbundle-cell-2
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: cell2
+    name: in-cluster
+  project: project-cell-2
+  source:
+    path: apps/app-bundle/cell-2
+    repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
+    targetRevision: HEAD
