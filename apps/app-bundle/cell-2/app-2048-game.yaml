@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-2048-game-prod-cell-2
+  name: app-2048-game-cell-2
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
