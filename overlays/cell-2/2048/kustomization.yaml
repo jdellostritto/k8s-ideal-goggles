@@ -43,8 +43,3 @@ replicas:
 - name: base-app-2048
   count: 1
 
-patches:
-- path: ./patch/ingress.yaml
-  target:
-    kind: Ingress
-    name: base
