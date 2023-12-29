@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
 - ../../../resources/namespace
 - ../../../resources/workload/deployment
-- ../../../resources/network/ingress
 - ../../../resources/network/service
 
 # These components are for the deploymnent and service.
