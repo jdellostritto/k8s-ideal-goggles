@@ -11,6 +11,6 @@ spec:
     name: in-cluster
   project: project-postgres-1
   source:
-    path: overlays/postres-1
+    path: overlays/postgres-1
     repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD
