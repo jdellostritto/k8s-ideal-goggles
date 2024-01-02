@@ -2,10 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 # Our base Manifests
 resources:
-- ../../../resources/volumes
-- ../../../resources/namespace
-- ../../../resources/workload/deployment
-- ../../../resources/network/service
+- ../../resources/volumes
+- ../../resources/namespace
+- ../../resources/workload/deployment
+- ../../resources/network/service
 
 # These components are for the deploymnent and service.
 # components are shared across each environment. There are no patches for the service and deployment here.
@@ -15,7 +15,7 @@ resources:
 # The name suffix will be appended the name of the resources (bases). 
 # In this example case our resource names are simply called `base`. 
 # So our service and deployment names will end up being:
-#  - 'base' + '-app-2048'
+#  - 'base' + 'nameSuffix'
 # This file as well as the ingress file will need to be aware of this name.
 nameSuffix: -postgres-1
 
