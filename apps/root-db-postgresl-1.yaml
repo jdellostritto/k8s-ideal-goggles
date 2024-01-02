@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-appbundle-postgres-1
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: db
+    name: in-cluster
+  project: project-postgres-1
+  source:
+    path: apps/app-bundle/postgres-1
+    repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
+    targetRevision: HEAD
