@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 # Our base Manifests
 resources:
-- ../../resources/volumes
 - ../../resources/namespace
 - ../../resources/workload/deployment
 - ../../resources/network/service
@@ -17,23 +16,28 @@ resources:
 # So our service and deployment names will end up being:
 #  - 'base' + 'nameSuffix'
 # This file as well as the ingress file will need to be aware of this name.
-nameSuffix: -postgres-1
+nameSuffix: -keycloak-1
 
 #The namespace to run.
 namespace: db
 
 secretGenerator:
-- name: database-creds
+- name: keycloak-creds
   literals:
-  - POSTGRES_USER=admin
-  - POSTGRES_PASSWORD=5H8MwbAGu7DvDng
-
+  - KC_DB=postgres
+  - KC_DB_URL=base-postgres-1:5432
+  - KC_DB_USERNAME=admin
+  - KC_DB_PASSWORD=5H8MwbAGu7DvDng
+  - KC_HOSTNAME=base-keycloak-1
+  - KEYCLOAK_ADMIN=vgsadmin
+  - KEYCLOAK_ADMIN_PASSWORD=fSHI3wpeR98GToh
+  - KC_HEALTH_ENABLED=true
 
 # The image and the tag to use.
 images:
 - name: UNDEFINED
-  newName: postgres
-  newTag: 15-alpine
+  newName: vgs-keycloak
+  newTag: 23.0.3
 
 # Annotation Transformer - used to determine where to put annotations
 transformers:
@@ -41,11 +45,11 @@ transformers:
 
 # The common label used for lables and Selectors.
 commonLabels:
-  app.kubernetes.io/name: base-postgres-1
+  app.kubernetes.io/name: base-keycloak-1
 
 # Replicas
 replicas:
-- name: base-postgres-1
+- name: base-keycloak-1
   count: 1
 
 patches:
