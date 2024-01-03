@@ -19,7 +19,7 @@ resources:
 nameSuffix: -keycloak-1
 
 #The namespace to run.
-namespace: db
+namespace: keycloak
 
 secretGenerator:
 - name: keycloak-creds
