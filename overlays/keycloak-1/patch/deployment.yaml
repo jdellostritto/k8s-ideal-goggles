@@ -2,55 +2,132 @@
 - op: replace
   path: /spec/template/spec/containers/0/name
   value: base-keycloak-1
-- op: replace
-  path: /spec/template/spec/containers/0/imagePullPolicy
-  value: Never
+#- op: replace
+#  path: /spec/template/spec/containers/0/imagePullPolicy
+#  value: Never
+- op: add
+  path: /spec/template/spec/containers/0/readinessProbe
+  value: 
+    httpGet:
+      path: /health/ready
+      port: 8080
+    initialDelaySeconds: 250
+    periodSeconds: 10
+- op: add
+  path: /spec/template/spec/containers/0/livenessProbe
+  value:
+    httpGet:
+      path: /health/live
+      port: 8080
+    initialDelaySeconds: 500
+    periodSeconds: 30
+    
+- op: add
+  path: /spec/template/spec/containers/0/args
+  value: ["start-dev"]
 - op: add
   path: /spec/template/spec/containers/0/env
-  value:
-    - name: KC_DB
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-creds
-          key: KC_DB
-    - name: KC_DB_URL
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-creds
-          key: KC_DB_URL
-    - name: KC_DB_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-creds
-          key: KC_DB_USERNAME
-    - name: KC_DB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-creds
-          key: KC_DB_PASSWORD
-    - name: KC_HOSTNAME
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-creds
-          key: KC_HOSTNAME
+  value: 
     - name: KEYCLOAK_ADMIN
       valueFrom:
         secretKeyRef:
-          name: keycloak-creds
+          name: keycloak-creds-keycloak-1
           key: KEYCLOAK_ADMIN
     - name: KEYCLOAK_ADMIN_PASSWORD
       valueFrom:
         secretKeyRef:
-          name: keycloak-creds
+          name: keycloak-creds-keycloak-1
           key: KEYCLOAK_ADMIN_PASSWORD
+    #- name: KC_PROXY
+    #  valueFrom:
+    #    secretKeyRef:
+    #      name: keycloak-creds-keycloak-1
+    #      key: KC_PROXY
+    #- name: jgroups.dns.query
+    #  valueFrom:
+    #    secretKeyRef:
+    #      name: keycloak-creds-keycloak-1
+    #      key: jgroups.dns.query
+    - name: PROXY_ADDRESS_FORWARDING
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: PROXY_ADDRESS_FORWARDING
     - name: KC_HEALTH_ENABLED
       valueFrom:
         secretKeyRef:
-          name: keycloak-creds
+          name: keycloak-creds-keycloak-1
           key: KC_HEALTH_ENABLED
+    - name: KC_METRICS_ENABLED
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_METRICS_ENABLED
+    - name: KC_HTTP_ENABLED
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_HTTP_ENABLED
+    - name: KEYCLOAK_HTTP_PORT
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KEYCLOAK_HTTP_PORT
+    - name: KC_HTTP_RELATIVE_PATH
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_HTTP_RELATIVE_PATH
+    - name: KC_DB
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_DB
+    - name: KC_DB_URL
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_DB_URL
+    - name: KC_DB_URL_HOST
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_DB_URL_HOST
+    - name: KC_DB_URL_PORT
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_DB_URL_PORT
+    - name: KC_DB_URL_DATABASE
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_DB_URL_DATABASE
+    - name: KC_DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_DB_USERNAME
+    - name: KC_DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_DB_PASSWORD
+    - name: KC_HOSTNAME
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-creds-keycloak-1
+          key: KC_HOSTNAME
+    #- name: KC_HOSTNAME_STRICT_HTTPS
+    #  valueFrom:
+    #    secretKeyRef:
+    #      name: keycloak-creds-keycloak-1
+    #      key: KC_HOSTNAME_STRICT_HTTPS
 - op: add
   path: /spec/template/spec/containers/0/ports
   value:
     - name: http
       containerPort: 8080
+    #- name: jgroups
+    #  containerPort: 7600
 
