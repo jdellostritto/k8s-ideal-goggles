@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 # Our base Manifests
 resources:
-- ../../../resources/namespace
+#- ../../../resources/namespace
 - ../../../resources/workload/deployment
 - ../../../resources/network/service
 
@@ -20,7 +20,7 @@ components:
 nameSuffix: -guest-book
 
 #The namespace to run.
-namespace: cell2
+#namespace: cell2
 
 images:
 - name: UNDEFINED

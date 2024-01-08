@@ -1,0 +1,17 @@
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: notImportantHere
+annotations:
+  argocd.argoproj.io/hook: PreSync
+  argocd.argoproj.io/sync-wave: "-1"
+  vgs.com/team: platform
+  vgs.com/environment: development
+  vgs.com/customer: all
+  vgs.com/department: R&D
+  vgs.com/criticality: low
+  vgs.com/data-sensitivity: low
+fieldSpecs:
+- kind: Namespace
+  path: metadata/annotations
+  create: true
