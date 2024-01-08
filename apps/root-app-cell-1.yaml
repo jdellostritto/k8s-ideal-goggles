@@ -15,9 +15,6 @@ spec:
     repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - PruneLast=true
