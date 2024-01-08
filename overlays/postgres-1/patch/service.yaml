@@ -1,7 +1,0 @@
----
-- op: replace
-  path: /spec/ports
-  value:
-    - name: http
-      port: 5432
-      targetPort: 5432
