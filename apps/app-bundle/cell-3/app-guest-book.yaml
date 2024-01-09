@@ -11,7 +11,7 @@ spec:
     name: in-cluster
   project: project-cell-3
   source:
-    path: overlays/cell-3/guest-book
+    path: overlays/cell-1/guest-book
     repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD
     
