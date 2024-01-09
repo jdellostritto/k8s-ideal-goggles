@@ -14,3 +14,7 @@ spec:
     path: apps/app-bundle/cell-3
     repoURL: https://github.com/jdellostritto/k8s-ideal-goggles
     targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true

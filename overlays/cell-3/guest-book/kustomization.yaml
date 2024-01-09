@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 # Our base Manifests
 resources:
-#- ../../../resources/namespace
 - ../../../resources/workload/deployment
 - ../../../resources/network/service
 
@@ -18,9 +17,6 @@ components:
 #  - 'base' + '-guest-book'
 # This file as well as the ingress file will need to be aware of this name.
 nameSuffix: -guest-book
-
-#The namespace to run.
-#namespace: cell3
 
 images:
 - name: UNDEFINED
